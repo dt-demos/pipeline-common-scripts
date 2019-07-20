@@ -5,7 +5,7 @@
 # $4 = tag-value-service
 
 # read Dynatrace values from the pipeline variables
-$DYNATRACE_API_URL=$Args[0]"/api/v1/events"
+$DYNATRACE_API_URL=$Args[0] + "/api/v1/events"
 $DYNATRACE_API_TOKEN=$Args[1]
 
 # set the data for the API call
