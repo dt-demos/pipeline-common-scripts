@@ -1,8 +1,11 @@
+# This script pushes Dynatrace CUSTOM_DEPLOYMENT event to the passed in Dyntrace tenant
+# Assumes that will tag entities with an "environment" and "service" TAG
+
 # arguments
-# $1 = dynatrace-base-url, eg. http://<tenant>.live.dynatrace.com
-# $2 = dynatrace-api-token
-# $3 = tag-value-environment
-# $4 = tag-value-service
+# $0 = dynatrace-base-url, eg. http://<tenant>.live.dynatrace.com
+# $1 = dynatrace-api-token
+# $2 = tag-value-environment
+# $3 = tag-value-service
 
 # read Dynatrace values from the pipeline variables
 $DYNATRACE_API_URL=$Args[0] + "/api/v1/events"
