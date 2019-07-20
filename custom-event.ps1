@@ -37,12 +37,12 @@ $REQUEST_BODY=@"
     "title" : "$TITLE",
     "description" : "$DESCRIPTION",
     "source" : "$SOURCE",
-    "customProperties": [
+    "customProperties": {
         "deploymentName" : "$DEPLOYMENT_NAME",
         "deploymentVersion" : "$DEPLOYMENT_VERSION",
         "deploymentProject" : "$DEPLOYMENT_PROJECT",
         "ciBackLink" : "$CI_BACKLINK"
-    ],
+    },
     "attachRules" : {
             "tagRule" : [
                 {
