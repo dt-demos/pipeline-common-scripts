@@ -41,7 +41,7 @@ $REQUEST_BODY=@"
         "deploymentName" : "$DEPLOYMENT_NAME",
         "deploymentVersion" : "$DEPLOYMENT_VERSION",
         "deploymentProject" : "$DEPLOYMENT_PROJECT",
-        "ciBackLink" : "$CI_BACKLINK",
+        "ciBackLink" : "$CI_BACKLINK"
     ],
     "attachRules" : {
             "tagRule" : [
