@@ -69,7 +69,7 @@ Write-Host "REQUEST_BODY          : "$REQUEST_BODY
 Write-Host "==============================================================="
 Write-Host "Calling Dynatrace Event API..."
 
-$RESULT_BODY = Invoke-RestMethod -Uri $DYNATRACE_API_URL -Method Post -Body $REQUEST_BODY -ContentType "application/json" -Headers $HEADERS
+$RESULT_BODY = Invoke-RestMethod -Uri $DYNATRACE_API_URL -Method Post -Body "$REQUEST_BODY" -ContentType "application/json" -Headers $HEADERS
 
 # show the full body for debugging
 $RESPONSE_JSON = $RESULT_BODY | ConvertTo-Json -Depth 5
