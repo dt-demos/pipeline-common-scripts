@@ -4,6 +4,8 @@ This repo contains reference scripts for use integrating Dynatrace into software
 
 In just a few steps, you can add Dynatrace information events for things like deployments, performance tests, or configuration changes. In doing so, your development and operations teams have additional context information during review and analysis of your applications.
 
+Read more in my [Dynatrace blog](https://www.dynatrace.com/news/blog/get-started-integrating-dynatrace-in-your-azure-devops-release-pipelines/)
+
 # Scripts
 
 ## PowerShell
