@@ -1,0 +1,19 @@
+#!/bin/bash
+# date -u +%Y-%m-%dT%H:%M:%SZ
+
+keptnApiUrl=https://api.keptn.XXXX
+keptnApiToken=
+start=2020-02-25T16:09:48Z
+end=2020-02-26T19:41:24Z
+project=sockshop
+service=carts
+stage=staging
+
+. ../keptn-quality-gate.sh \
+    $keptnApiUrl \
+    $keptnApiToken \
+    $start \
+    $end \
+    $project \
+    $service \
+    $stage
