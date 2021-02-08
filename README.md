@@ -19,8 +19,9 @@ Read more in my [Dynatrace blog](https://www.dynatrace.com/news/blog/get-started
 * azureDevopsDeploymentEvent.ps1 - add Dynatrace CUSTOM_DEPLOYMENT event
 
 ## Unix Shell
+* bitbucketPushEvent.sh - push events from one script.  Used bitbucket built-in vars for various properties in the event
 * dynatrace-deployment-event.sh - add Dynatrace CUSTOM_DEPLOYMENT event
-* dynatrace-bitbucket-events.sh - add misc events from on script. Modify for your CI/CD tool
+* dynatrace-push-event.sh - add misc events from on script. Modify for your CI/CD tool
 * test-keptn-quality-gate.sh - used to test [http://keptn.sh](Keptn Quality Gate)
 * send-traffic.sh - simple script to send load with request attributes
 * wait-till-ready.sh - simply script to add after a deployment event
