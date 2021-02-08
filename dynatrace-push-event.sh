@@ -5,11 +5,16 @@
 # Required enviroment variables
 # - DYNATRACE_BASE_URL
 # - DYNATRACE_API_TOKEN
+# - DEPLOYMENT_PROJECT
+# - DEPLOYMENT_NAME
+# - DEPLOYMENT_VERSION
+# - SOURCE
+# - CI_BACK_LINK
 # - EVENT_TYPE
 # - TAG_RULE
 #
 # Optional
-# - DEBUG
+# - DEBUG  -- values 'false' and 'true'
 # 
 
 info "Executing dynatrace-send-event..."
@@ -17,21 +22,18 @@ info "Executing dynatrace-send-event..."
 # Required parameters
 DYNATRACE_BASE_URL=${DYNATRACE_BASE_URL:?'DYNATRACE_BASE_URL variable missing.'}
 DYNATRACE_API_TOKEN=${DYNATRACE_API_TOKEN:?'DYNATRACE_API_TOKEN variable missing.'}
-DEPLOYMENT_PROJECT=${DEPLOYMENT_PROJECT:="$BITBUCKET_PROJECT_KEY"}
-DEPLOYMENT_NAME=${DEPLOYMENT_NAME:="$BITBUCKET_REPO_FULL_NAME"}
-DEPLOYMENT_VERSION=${DEPLOYMENT_VERSION:="$BITBUCKET_BUILD_NUMBER"}
+
+DEPLOYMENT_PROJECT=${DEPLOYMENT_PROJECT:?'DEPLOYMENT_PROJECT variable missing.'}
+DEPLOYMENT_NAME=${DEPLOYMENT_NAME:?'DEPLOYMENT_NAME variable missing.'}
+DEPLOYMENT_VERSION=${DEPLOYMENT_VERSION:?'DEPLOYMENT_VERSION variable missing.'}
+SOURCE=${SOURCE:?'SOURCE variable missing.'}
+CI_BACK_LINK=${CI_BACK_LINK:?'SOURCE variable missing.'}
+
 EVENT_TYPE=${EVENT_TYPE:="$EVENT_TYPE"}
-SOURCE=${SOURCE:="BitbucketPipelines"}
 
 # Optional Value
 DEBUG=${DEBUG:="false"}
 
-CI_BACK_LINK="my back link"
-
-# Deployment arguments
-DEPLOYMENT_PROJECT=${DEPLOYMENT_PROJECT:="$BITBUCKET_PROJECT_KEY"}
-DEPLOYMENT_NAME=${DEPLOYMENT_NAME:="$BITBUCKET_REPO_FULL_NAME"}
-DEPLOYMENT_VERSION=${DEPLOYMENT_VERSION:="$BITBUCKET_BUILD_NUMBER"}
 
 # Calculated values
 DYNATRACE_API_URL="$DYNATRACE_BASE_URL/api/v1/events"
@@ -69,19 +71,20 @@ case $EVENT_TYPE in
     DEPLOYMENT_NAME=${DEPLOYMENT_NAME:?'DEPLOYMENT_NAME must be supplied for CUSTOM_DEPLOYMENT'}
     DEPLOYMENT_DESCRIPTION=${DEPLOYMENT_DESCRIPTION:?'DEPLOYMENT_DESCRIPTION must be supplied for CUSTOM_DEPLOYMENT'}
 
-    CUSTOM_PROPERTIES=$(cat <<EOF
-    {
-      "buildNumber":"$BITBUCKET_BUILD_NUMBER",
-      "deploymentEnvironment":"$BITBUCKET_DEPLOYMENT_ENVIRONMENT",
-      "gitHttpOrigin":"$BITBUCKET_GIT_HTTP_ORIGIN",
-      "gitCommit":"$BITBUCKET_COMMIT",
-      "gitBranch":"$BITBUCKET_BRANCH",
-      "gitTag":"$BITBUCKET_TAG",
-      "prDestinationBranch":"$BITBUCKET_PR_DESTINATION_BRANCH",
-      "projectKey":"$BITBUCKET_PROJECT_KEY",
-      "repoFullName":"$BITBUCKET_REPO_FULL_NAME",
-      "repoOwner":"$BITBUCKET_REPO_OWNER"
-    }
+    # customize this example
+    #CUSTOM_PROPERTIES=$(cat <<EOF
+    # {
+    #  "buildNumber":"$BITBUCKET_BUILD_NUMBER",
+    #  "deploymentEnvironment":"$BITBUCKET_DEPLOYMENT_ENVIRONMENT",
+    #  "gitHttpOrigin":"$BITBUCKET_GIT_HTTP_ORIGIN",
+    #  "gitCommit":"$BITBUCKET_COMMIT",
+    #  "gitBranch":"$BITBUCKET_BRANCH",
+    #  "gitTag":"$BITBUCKET_TAG",
+    #  "prDestinationBranch":"$BITBUCKET_PR_DESTINATION_BRANCH",
+    #  "projectKey":"$BITBUCKET_PROJECT_KEY",
+    #  "repoFullName":"$BITBUCKET_REPO_FULL_NAME",
+    #  "repoOwner":"$BITBUCKET_REPO_OWNER"
+    # }
 EOF
     )
 
