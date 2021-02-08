@@ -13,14 +13,17 @@ Read more in my [Dynatrace blog](https://www.dynatrace.com/news/blog/get-started
 # Scripts
 
 ## PowerShell
-* captureStartTime.ps1 - save current time to environment variable
-* captureEndTime.ps1 - save current time to environment variable
+* azureDevopsCaptureStartTime.ps1 - save current time to environment variable
+* azureDevopsCaptureEndTime.ps1 - save current time to environment variable
 * azureDevopsCustomEvent.ps1 - add Dynatrace CUSTOM_INFO event
 * azureDevopsDeploymentEvent.ps1 - add Dynatrace CUSTOM_DEPLOYMENT event
 
 ## Unix Shell
 * dynatrace-deployment-event.sh - add Dynatrace CUSTOM_DEPLOYMENT event
+* dynatrace-bitbucket-events.sh - add misc events from on script. Modify for your CI/CD tool
 * test-keptn-quality-gate.sh - used to test [http://keptn.sh](Keptn Quality Gate)
+* send-traffic.sh - simple script to send load with request attributes
+* wait-till-ready.sh - simply script to add after a deployment event
 
 # Local testing
 
