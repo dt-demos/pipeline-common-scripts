@@ -13,6 +13,7 @@ ENTITY_SELECTOR=$3
 # type(SERVICE),tag(keptn_project:casdemo,keptn_service:casdemoapp,keptn_stage:production)
 # type(SERVICE),entityName.equals(BookingService)
 # type(HOST),fromRelationship.isInstanceOf(type(HOST_GROUP),entityName(cloud-burst-hosts))
+# type(PROCESS_GROUP_INSTANCE),tag([Environment]DT_RELEASE_PRODUCT:open-feature-demo)
 
 # event types
 # AVAILABILITY_EVENT
@@ -46,15 +47,13 @@ echo "  $DT_BASEURL/api/v2/events/ingest"
 echo "=============================================================="
 echo $PAYLOAD
 echo "=============================================================="
-curl -s -X POST \
+curl -X POST \
           "$DT_BASEURL/api/v2/events/ingest" \
           -H 'accept: application/json; charset=utf-8' \
           -H "Authorization: Api-Token $DT_API_TOKEN" \
           -H 'Content-Type: application/json; charset=utf-8' \
-          -d "$PAYLOAD" \
-          -o curloutput.txt
+          -d "$PAYLOAD"
 
 echo "API RESPONSE:"
 echo "=============================================================="
 echo ""
-cat curloutput.txt
